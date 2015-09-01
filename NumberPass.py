@@ -4,8 +4,6 @@ Created on 23/02/2012
 Last Update on 01/09/2015
 
 @author: ultrazoid_
-
-THIS IS A DEBUG VERSION
 '''
 
 import random 
@@ -52,18 +50,14 @@ while ss != 'end':
     fo = open (filename, "r")
     bb = raw_input('What is this Password number for:')
     twin = bb + ':'
-    print twin
     #check to see if line needs to be overwritten
     overCheck = fo.readlines()
     overDo = False
-    print overCheck
     for locale in overCheck:
         form = string.split(locale, ' ')
-        print form
-    	if twin == form:
+    	if twin == form[0]:
     		overDo = True
     		overCheck.remove(locale)
-    		print overCheck
     	else:
     		do = "nothing"
     fo.close()
@@ -73,6 +67,7 @@ while ss != 'end':
     	for line in overCheck: 
     		fo.write(line)
  	fo.close()
+ 	fo = open (filename, "a")
     if overDo == False:   
         fo = open (filename, "a")
 
