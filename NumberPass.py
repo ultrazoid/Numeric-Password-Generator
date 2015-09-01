@@ -1,16 +1,19 @@
 '''
 Created on 23/02/2012
 
-Last Update on 07/09/2014
+Last Update on 01/09/2015
 
 @author: ultrazoid_
+
+THIS IS A DEBUG VERSION
 '''
 
 import random 
 import time
+import string
 
 """
-^ imports time and random features
+^ imports needed core features
 """
 
 """
@@ -25,7 +28,7 @@ sf = open (filename2, "r")
 sef = sf.read(8)
 if sef == ' ':
 	sf.close()
-	print "pass.settings not found creating..."
+	print "Settings file not found creating..."
 	sf = open (filename2, "w")
 	ff = raw_input('Please enter a filename to store password numbers in:')
 	ff += '.yml'
@@ -34,31 +37,43 @@ else:
 	ff=sef
 sf.close()
 filename=ff
-fo = open (filename, "r") 
+try:
+        fo = open (filename, "r")
+except IOError:
+        print "Allocated file note found"
+        fo = open (filename, "a")
+        print "Creating"
+        fo.close()
+        print "Created!"
 
 ss = raw_input('press any key to continue(end to end):') #asks user to press any key or enter 'end' to stop the program
 
 while ss != 'end':
+    fo = open (filename, "r")
     bb = raw_input('What is this Password number for:')
-
+    twin = bb + ':'
+    print twin
     #check to see if line needs to be overwritten
     overCheck = fo.readlines()
-    overDo = False 
+    overDo = False
+    print overCheck
     for locale in overCheck:
-    	if bb in locale:
+        form = string.split(locale, ' ')
+        print form
+    	if twin == form:
     		overDo = True
     		overCheck.remove(locale)
+    		print overCheck
     	else:
     		do = "nothing"
     fo.close()
     if overDo == True:
     	open(filename, 'w').close()
-    	for line in overCheck:
-    		fo = open (filename, "a") 
+    	fo = open (filename, "a")
+    	for line in overCheck: 
     		fo.write(line)
- 	else:
- 		do = "nothing"
-    if overDo == False:
+ 	fo.close()
+    if overDo == False:   
         fo = open (filename, "a")
 
     ab = str(random.randrange(0,9))
@@ -75,6 +90,7 @@ while ss != 'end':
     fo.write(':   ')
     fo.write(aa)
     fo.write('\n')
+    fo.close()
     ss = raw_input('press any key to continue(end to end):') #asks user to press any key or enter 'end' to stop the program
 print 'ending...' #prints ending...
 print 'saving...'
