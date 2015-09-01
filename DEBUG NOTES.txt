@@ -1,4 +1,4 @@
 CURRENT DEBUG NOTES
 
 TO DO:
-NONE SO FAR
++ Add custom length mode
