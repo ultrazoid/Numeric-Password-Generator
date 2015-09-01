@@ -1,6 +1,4 @@
 CURRENT DEBUG NOTES
 
 TO DO:
-|=> Remove file for overwritting
-|=> Add clear function with 3 layer check
-|=> Define function for clearing process, as call twice
+NONE SO FAR
